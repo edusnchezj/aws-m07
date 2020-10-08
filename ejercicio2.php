@@ -18,13 +18,11 @@
   for ($i=0; $i < count($diasDelMes); $i++) {
     $diasDelMes[$i] = array_pad($diasDelMes[$i], 7, 0);
   }
-
-  echo json_encode($diasDelMes, true);
   ?>
   <body>
     <table border="1" width="100%" height="100%">
       <tr style="text-align: center; font-weight: bold; text-transform: uppercase;">
-        <td colspan="7"><?php echo date('F'); ?></td>
+        <td colspan="7"><?php echo date('F Y'); ?></td>
       </tr>
       <tr style="text-align: center; font-weight: bold;" >
         <td>Lunes</td>
