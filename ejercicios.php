@@ -79,11 +79,12 @@
       foreach ($articles as $article) {
         $product[] = explode(';', $article);
       }
-      echo '<table>
+      echo '
+      <table>
         <tr style="text-transform: uppercase; font-weight: bold;">
           <td>Producto</td>
           <td>Descripción</td>
-          <td>Coste</td>
+          <td>precio</td>
         <tr>';
       for ($c=0; $c < count($product); $c++) {
         echo '
@@ -93,9 +94,62 @@
           <td>'.$product[$c][2].'€</td>
         </tr>';
       }
-      echo '</table>';
+      echo '
+      </table>';
     ?>
   </div>
   <!-- </ejercicio_3> -->
+
+  <!-- <ejercicio_4> -->
+  <h3>Ejercicio 4</h3>
+  <ul><li>Crea un formulario que añada más productos a la lista anterior del ejercicio 3.</li></ul>
+
+  <div id="ejercicio4">
+    <?php
+      function clear_input($str) {
+          return strip_tags(trim($str));
+      }
+
+      if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $newProducte['product'] = clear_input($_POST['producto']);
+        $newProducte['description'] = clear_input($_POST['descripcion']);
+        $newProducte['prize'] = clear_input($_POST['precio']);
+
+        if(!empty($newProducte['product']) && !empty($newProducte['description']) && !empty($newProducte['prize'])) {
+          if(!preg_match("/^[a-zA-Z-' ]*$/", $newProducte['product'])) {
+            $errs[] = 'Solo se aceptan letras y espacios en el nombre del producto.';
+          }
+
+          if(!filter_var($newProducte['prize'], FILTER_VALIDATE_FLOAT)) {
+            $errs[] = 'Debe de ser un precio correcto.';
+          }
+
+          if(@$errs) {
+            foreach ($errs as $err) {
+              echo '<span style="color: red;">'.$err.'</span><br>';
+            }
+          } else {
+            $file = fopen('ejercicio3txt.txt', 'a');
+            if(fwrite($file, $newProducte['product'].';'.$newProducte['description'].';'.$newProducte['prize'].PHP_EOL)) {
+              echo '<span style="color: green;">Se ha añadido el producto.</span>';
+            }
+          }
+        } else {
+          echo '<span style="color: red;">Todos los campos deben de estar rellenados.</span>';
+        }
+      }
+    ?>
+    <form method="post" autocomplete="off">
+      <label for="producto">Nombre del producto:</label>
+      <input id="producto" name="producto" type="text" style="width: 100%;"/><br>
+      <label for="descripcion">Descripción del producto:</label>
+      <textarea id="descripcion" name="descripcion" style="width: 100%;"></textarea><br>
+      <label for="precio">Precio del producto:</label>
+      <input id="precio" name="precio" type="text" step="0.01" style="width: 100%;"/><br>
+
+      <input type="submit" value="Subir producto" style="margin-top: 10px;width: 100%;"/>
+    </form>
+  </div>
+  <!-- </ejercicio_4> -->
 </body>
 </html>
