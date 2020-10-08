@@ -1,0 +1,3 @@
+Patatas;Patatas blancas del emporda;1.85;
+Peras;Pera conference;2.15;
+Zanahoria;Zanahoria ECO; 1.5;
