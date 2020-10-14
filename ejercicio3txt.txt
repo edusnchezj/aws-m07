@@ -3,6 +3,5 @@ Peras;Pera conference;2.15;
 Zanahoria;Zanahoria ECO; 1.5;
 Manzana;Unas manzanas deliciosas.;8
 Kiwi;Unos kiwis sabrosos para el paladar humano.;2
-Fresa;Unas fresas sacadas del huerto. Pueden salir un poco grises, pero con pintura se soluciona.;0.5
 Magdalenas;Unas magdalenas exquisitas con un sabor a chocolate debido a un trozo de chocolate incrustrado en el interior de estas deliciosas magdalenas.;0.89
 Tablas de chocolates;No, no es un Kitkat.;2

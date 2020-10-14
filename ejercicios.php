@@ -74,8 +74,8 @@
   <!-- </ejercicio_2> -->
 
   <!-- <ejercicio_3> -->
-  <h3>Ejercicio 3</h3>
-  <ul><li>A partir de un archivo de texto, coge los productos de una tienda y enseñalos.</li></ul>
+  <h3>Ejercicio 3 & 5</h3>
+  <ul><li>A partir de un archivo de texto, coge los productos de una tienda y enseñalos. <em>Y después añade un botón que elimine los diferentes productos.</em></li></ul>
 
   <div id="ejercicio3">
     <?php
