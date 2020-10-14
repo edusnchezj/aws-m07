@@ -18,6 +18,8 @@
   for ($i=0; $i < count($diasDelMes); $i++) {
     $diasDelMes[$i] = array_pad($diasDelMes[$i], 7, 0);
   }
+
+  //echo json_encode($diasDelMes, true);
   ?>
   <body>
     <table border="1" width="100%" height="100%">
@@ -39,6 +41,8 @@
           foreach($diasDelMes[$i] as $semana) {
             if($semana == 0) {
               echo "<td style=\"background: #B0B0B0;\" rowspan=\"2\"></td>";
+            } else if(date('j') == $semana) {
+              echo "<td style=\"background: #E4DC8E; padding: 10px; text-align: center;\">$semana</td>";
             } else {
               echo "<td style=\"background: #F2F2F2; padding: 10px; text-align: center;\">$semana</td>";
             }
@@ -48,7 +52,11 @@
           echo '<tr style="text-align: left;">';
           foreach($diasDelMes[$i] as $semana) {
             if($semana != 0) {
-              echo "<td style=\"padding: 10px; vertical-align: top;\"></td>";
+              if(date('j') != $semana) {
+                  echo "<td style=\"padding: 10px; vertical-align: top;\"></td>";
+              } else {
+                  echo "<td style=\"padding: 10px; background-color: #E4DC8E; vertical-align: top;\"></td>";
+              }
             }
           }
           echo '</tr>';

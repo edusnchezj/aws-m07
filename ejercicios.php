@@ -9,6 +9,10 @@
     error_reporting(E_ALL);
   ?>
   <style>
+  body {
+    background: white;
+  }
+
   div {
     padding: 10px;
     background: #EFEFEF;
@@ -87,8 +91,12 @@
           <td>precio</td>
         <tr>';
       for ($c=0; $c < count($product); $c++) {
+        if($c == count($product)-1) {
+          echo '<tr style="font-weight: bold;">';
+        } else {
+          echo '<tr>';
+        }
         echo '
-        <tr>
           <td>'.$product[$c][0].'</td>
           <td>'.$product[$c][1].'</td>
           <td>'.$product[$c][2].'€</td>
@@ -110,7 +118,7 @@
           return strip_tags(trim($str));
       }
 
-      if($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload_product'])) {
         $newProducte['product'] = clear_input($_POST['producto']);
         $newProducte['description'] = clear_input($_POST['descripcion']);
         $newProducte['prize'] = clear_input($_POST['precio']);
@@ -147,7 +155,7 @@
       <label for="precio">Precio del producto:</label>
       <input id="precio" name="precio" type="text" step="0.01" style="width: 100%;"/><br>
 
-      <input type="submit" value="Subir producto" style="margin-top: 10px;width: 100%;"/>
+      <input type="submit" name="upload_product" value="Subir producto" style="margin-top: 10px;width: 100%;"/>
     </form>
   </div>
   <!-- </ejercicio_4> -->
