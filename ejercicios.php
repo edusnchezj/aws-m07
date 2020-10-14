@@ -93,9 +93,9 @@
         <tr style="text-transform: uppercase; font-weight: bold;">
           <td>Producto</td>
           <td>Descripción</td>
-          <td>precio</td>';
-        if(isset($_GET['deleteProducts'])) { echo '<td></td>'; }
-        echo '<tr>';
+          <td>precio</td>
+          <td></td>
+        <tr>';
       for ($c=0; $c < count($product); $c++) {
         if($c == count($product)-1) {
           echo '<tr style="font-weight: bold;">';
@@ -106,7 +106,9 @@
           <td>'.$product[$c][0].'</td>
           <td>'.$product[$c][1].'</td>
           <td>'.$product[$c][2].'€</td>';
-          if(isset($_GET['deleteProducts'])) { echo '<td><a href="deleteProduct.php?id='.$c.'" onclick="return confirm(\'¿Estás seguro?\')"><img src="trash.png" style="width: 20px; height: auto;" dragabble="false"></a></td>'; }
+          if(isset($_GET['deleteProducts'])) { echo '<td><a href="deleteProduct.php?id='.$c.'" onclick="return confirm(\'¿Estás seguro?\')"><img src="trash.png" style="width: 20px; height: auto;" dragabble="false"></a></td>'; } else {
+            echo '<td><a href="selectProduct.php?id='.$c.'"><img src="newCarro.png" style="width: 20px; height: auto;" dragabble="false"></a></td>';
+          }
         echo '</tr>';
       }
       echo '
