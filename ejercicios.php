@@ -119,9 +119,9 @@
       }
 
       if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['upload_product'])) {
-        $newProducte['product'] = clear_input($_POST['producto']);
-        $newProducte['description'] = clear_input($_POST['descripcion']);
-        $newProducte['prize'] = clear_input($_POST['precio']);
+        $newProducte['product'] = str_replace(';', '', clear_input($_POST['producto']));
+        $newProducte['description'] = str_replace(';', '', clear_input($_POST['descripcion']));
+        $newProducte['prize'] = str_replace(';', '', clear_input($_POST['precio']));
 
         if(!empty($newProducte['product']) && !empty($newProducte['description']) && !empty($newProducte['prize'])) {
           if(!preg_match("/^[a-zA-Z-' ]*$/", $newProducte['product'])) {
