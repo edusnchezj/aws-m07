@@ -79,6 +79,11 @@
 
   <div id="ejercicio3">
     <?php
+      if(!isset($_GET['deleteProducts'])) {
+        echo '<a href="ejercicios.php?deleteProducts"><button style="margin-bottom: 10px; float: right;">Borrar productos</button></a>';
+      } else if(isset($_GET['deleteProducts'])) {
+        echo '<a href="ejercicios.php"><button style="margin-bottom: 10px; float: right;">Ver normal</button></a>';
+      }
       $articles = file('ejercicio3txt.txt') or die("Error al obtener los productos.");
       foreach ($articles as $article) {
         $product[] = explode(';', $article);
@@ -88,8 +93,9 @@
         <tr style="text-transform: uppercase; font-weight: bold;">
           <td>Producto</td>
           <td>Descripción</td>
-          <td>precio</td>
-        <tr>';
+          <td>precio</td>';
+        if(isset($_GET['deleteProducts'])) { echo '<td></td>'; }
+        echo '<tr>';
       for ($c=0; $c < count($product); $c++) {
         if($c == count($product)-1) {
           echo '<tr style="font-weight: bold;">';
@@ -99,8 +105,9 @@
         echo '
           <td>'.$product[$c][0].'</td>
           <td>'.$product[$c][1].'</td>
-          <td>'.$product[$c][2].'€</td>
-        </tr>';
+          <td>'.$product[$c][2].'€</td>';
+          if(isset($_GET['deleteProducts'])) { echo '<td><a href="deleteProduct.php?id='.$c.'" onclick="return confirm(\'¿Estás seguro?\')"><img src="trash.png" style="width: 20px; height: auto;" dragabble="false"></a></td>'; }
+        echo '</tr>';
       }
       echo '
       </table>';
