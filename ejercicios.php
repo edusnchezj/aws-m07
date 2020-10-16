@@ -7,6 +7,7 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+    session_start();
   ?>
   <style>
   body {
@@ -79,6 +80,9 @@
 
   <div id="ejercicio3">
     <?php
+      if(isset($_SESSION['carroCompra'])) {
+         echo '<button>'.count($_SESSION['carroCompra']).' articulos en el carrito</button> <a href="finishPurchase.php"><button>Finalizar compra</button></a>';
+      }
       if(!isset($_GET['deleteProducts'])) {
         echo '<a href="ejercicios.php?deleteProducts"><button style="margin-bottom: 10px; float: right;">Borrar productos</button></a>';
       } else if(isset($_GET['deleteProducts'])) {
